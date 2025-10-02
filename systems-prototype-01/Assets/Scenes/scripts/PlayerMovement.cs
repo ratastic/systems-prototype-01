@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float dashCounter;
     private float dashCoolCounter;
+
+    //private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //anim = GetComponent<Animator>();
         activeMoveSpeed = moveSpeed;
     }
 
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 activeMoveSpeed = dashSpeed;
                 dashCounter = dashDuration;
+                //anim.SetBool("isSpinning", true);
             }
         }
 
