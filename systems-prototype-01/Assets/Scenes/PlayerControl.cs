@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-
     private float activeMoveSpeed;
     public float dashSpeed;
 
@@ -15,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float dashCounter;
     private float dashCoolCounter;
+    //public bool isGrounded = true;
 
     //private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        //moveInput.y = Input.GetAxisRaw("Vertical");
 
         moveInput.Normalize();
 
@@ -59,7 +59,31 @@ public class PlayerMovement : MonoBehaviour
         if (dashCoolCounter > 0)
         {
             dashCoolCounter -= Time.deltaTime;
-
         }
     }
+    // public void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("platform"))
+    //     {
+    //         Debug.Log("touching a platform");
+    //         //isGrounded = true;
+    //     }
+    // }
+
+    // void OnCollisionStay2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("platform"))
+    //     {
+    //         isGrounded = true;
+    //     }
+    // }
+
+    // void OnCollisionExit2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("platform"))
+    //     {
+    //         isGrounded = false;
+    //         Debug.Log("Left platform");
+    //     }
+    // }
 }
