@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 
 public class JumpController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class JumpController : MonoBehaviour
     public float moveForce;
     private Rigidbody2D rb2d;
     public bool isGrounded;
+    private bool hasBoosted = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +22,6 @@ public class JumpController : MonoBehaviour
     {
         MovementOne();
         //MovementTwo();
-
     }
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -28,6 +29,7 @@ public class JumpController : MonoBehaviour
         if (col.gameObject.CompareTag("platform"))
         {
             isGrounded = true;
+            hasBoosted = false;
             Debug.Log("player is grounded");
         }
         else
@@ -54,14 +56,15 @@ public class JumpController : MonoBehaviour
             isGrounded = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (!isGrounded && !hasBoosted && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("shift is pressed");
             float finalJumpForce = jumpForce;
             if (Input.GetKey(KeyCode.RightShift))
-            {       
+            {
                 finalJumpForce *= .8f;
                 Debug.Log("boost activated");
+                hasBoosted = true;
             }
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, finalJumpForce);
             isGrounded = false;
