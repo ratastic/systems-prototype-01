@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerGetHit : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerGetHit : MonoBehaviour
     public JumpController jumpController;
     public bool evaporated = false;
     private Vector3 evaporatedWater = new Vector3(0f, 0f, 0f);
-    public Text finalText;
+    public TextMeshProUGUI finalText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
