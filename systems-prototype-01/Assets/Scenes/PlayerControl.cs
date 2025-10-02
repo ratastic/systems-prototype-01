@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashCounter;
     private float dashCoolCounter;
     //public bool isGrounded = true;
+    public float jumpForce = 5f;
 
     //private Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCoolCounter -= Time.deltaTime;
         }
+
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Debug.Log("space is being pressed");
+        //     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        // }
     }
     // public void OnCollisionEnter2D(Collision2D col)
     // {
